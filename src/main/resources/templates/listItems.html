@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous"/>
+    <title>Clothing Store</title>
+
+    <!-- Your custom styles... -->
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+        }
+        h1{
+            font-family: "Comic Sans MS";
+            border: solid;
+            border-radius: 40px;
+            border-color: white;
+            padding-bottom: 5px;
+            background-color: #f1a801;
+        }
+
+        .container {
+            background-color: #0c7bef;
+            padding: 80px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2em;
+            text-align: center;
+        }
+        h1:hover {
+            background-color: #f0f0f0;
+            border-color: #f0f0f0;
+            color: #020202;
+        }
+
+        .table {
+            background-color: #f1a801;
+            border-radius: 10px;
+        }
+
+        th, td {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #f1a801;
+            border-color: #ffffff;
+            border-radius: 20px;
+            border:solid;
+            color: #ffffff;
+            width: 50%;
+            padding: 10px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            border-color: #f0f0f0;
+            color: #007bff;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Clothing Warehouse</h1>
+    <img th:src="@{/clothes.jpg}" alt="Clothing Store Image" width="100%"/>
+
+    <!-- Table to display items -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Year of Creation</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over items and display them in the table -->
+        <tr th:each="item : ${items}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.brand}"></td>
+            <td th:text="${item.yearOfCreation}"></td>
+            <td th:text="${item.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Button to sort items by brand -->
+    <form action="/deleteAllItems" method="post">
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+
+</div>
+
+
+</body>
+</html>
